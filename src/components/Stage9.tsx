@@ -118,12 +118,12 @@ export default function Stage9({}: Props) {
             >
               <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-2xl overflow-hidden border-4 border-pink-300/30 shadow-[0_0_40px_rgba(255,182,193,0.5)] mb-8 bg-black/20">
                 <img 
-                  src="/gift.jpg" 
-                  alt="Bouquet and Cake" 
+                  src="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?auto=format&fit=crop&w=800&q=80" 
+                  alt="Bouquet of Red Roses" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                   onError={(e) => {
-                    e.currentTarget.src = "https://images.unsplash.com/photo-1562690868-60bbe7293e94?auto=format&fit=crop&w=800&q=80";
+                    e.currentTarget.src = "https://images.pexels.com/photos/540522/pexels-photo-540522.jpeg?auto=compress&cs=tinysrgb&w=800";
                   }}
                 />
               </div>
