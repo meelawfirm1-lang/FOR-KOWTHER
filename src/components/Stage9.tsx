@@ -116,12 +116,15 @@ export default function Stage9({}: Props) {
               transition={{ duration: 0.8, type: "spring" }}
               className="mt-12 flex flex-col items-center justify-center"
             >
-              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border-4 border-pink-300/30 shadow-[0_0_40px_rgba(255,182,193,0.5)] mb-8">
+              <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-2xl overflow-hidden border-4 border-pink-300/30 shadow-[0_0_40px_rgba(255,182,193,0.5)] mb-8 bg-black/20">
                 <img 
-                  src="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="Bouquet" 
+                  src="/gift.jpg" 
+                  alt="Bouquet and Cake" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    e.currentTarget.src = "https://images.unsplash.com/photo-1562690868-60bbe7293e94?auto=format&fit=crop&w=800&q=80";
+                  }}
                 />
               </div>
               <h2 className="text-4xl md:text-5xl font-amiri font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-pink-300 glow-text leading-relaxed">
