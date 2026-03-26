@@ -46,7 +46,7 @@ export default function Stage7({ onNext }: Props) {
             transition={{ duration: 1.5 }}
             className="flex flex-col items-center px-2"
           >
-            <p className="text-2xl md:text-5xl font-amiri text-pink-100 leading-relaxed glow-text mb-12 md:mb-16">
+            <p className="text-2xl md:text-5xl font-amiri text-white leading-relaxed glow-text mb-12 md:mb-16 font-medium">
               إذا كنتِ تبتسمين الآن…<br/>
               فما زال الأجمل لم يبدأ بعد ✨
             </p>

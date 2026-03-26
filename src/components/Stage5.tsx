@@ -34,7 +34,7 @@ export default function Stage5({ onNext }: Props) {
             >
               28
             </motion.h1>
-            <p className="mt-6 md:mt-8 text-lg md:text-xl font-amiri text-yellow-100/80 group-hover:text-yellow-100 transition-colors animate-pulse">
+            <p className="mt-6 md:mt-8 text-lg md:text-xl font-amiri text-yellow-50 group-hover:text-white transition-colors animate-pulse font-medium">
               المسي الرقم ✨
             </p>
           </motion.div>
@@ -51,7 +51,7 @@ export default function Stage5({ onNext }: Props) {
               <div className="text-8xl text-pink-300/20 animate-spin-reverse absolute">🌟</div>
             </div>
             
-            <p className="text-xl md:text-4xl font-amiri text-white/90 leading-loose whitespace-pre-line glow-text relative z-10">
+            <p className="text-xl md:text-4xl font-amiri text-white leading-loose whitespace-pre-line glow-text relative z-10 font-medium">
               28 ليس مجرد رقم...<br/><br/>
               إنه اليوم الذي اختارت فيه الحياة أن تهدينا فتاة لا تشبه أحدًا 💖
             </p>

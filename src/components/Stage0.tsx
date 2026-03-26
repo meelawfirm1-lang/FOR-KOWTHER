@@ -55,12 +55,12 @@ export default function Stage0({ onSuccess }: Props) {
             className="space-y-6"
           >
             <div className="mb-8">
-              <h1 className="text-2xl md:text-3xl font-amiri text-pink-200 mb-4 glow-text">مرحبًا...</h1>
-              <p className="text-base md:text-lg text-white/80 leading-relaxed">
+              <h1 className="text-2xl md:text-3xl font-amiri text-pink-100 mb-4 glow-text font-bold">مرحبًا...</h1>
+              <p className="text-base md:text-lg text-white leading-relaxed font-medium">
                 هذه ليست صفحة عادية،<br/>
                 بل مفاجأة صُنعت لقلبٍ محدد جدًا 💖
               </p>
-              <p className="text-xs md:text-sm text-white/60 mt-4">من فضلكِ أخبرينا من أنتِ...</p>
+              <p className="text-xs md:text-sm text-white/90 mt-4">من فضلكِ أخبرينا من أنتِ...</p>
             </div>
 
             <div className="space-y-4">
@@ -69,14 +69,14 @@ export default function Stage0({ onSuccess }: Props) {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="اكتبي اسمكِ هنا..."
-                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:border-pink-300/50 text-center text-white placeholder:text-white/30 transition-colors text-sm md:text-base"
+                className="w-full px-4 py-3 bg-black/40 border border-white/30 rounded-xl focus:outline-none focus:border-pink-300 text-center text-white placeholder:text-white/60 transition-colors text-sm md:text-base font-medium"
               />
               <input
                 type="text"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
                 placeholder="اكتبي تاريخ ميلادكِ بأي طريقة تعرفينها..."
-                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:border-pink-300/50 text-center text-white placeholder:text-white/30 transition-colors text-sm md:text-base"
+                className="w-full px-4 py-3 bg-black/40 border border-white/30 rounded-xl focus:outline-none focus:border-pink-300 text-center text-white placeholder:text-white/60 transition-colors text-sm md:text-base font-medium"
               />
             </div>
 
@@ -113,9 +113,9 @@ export default function Stage0({ onSuccess }: Props) {
             <Sparkles className="w-16 h-16 mx-auto text-yellow-200 animate-pulse" />
             
             <div className="space-y-4 relative z-10">
-              <h2 className="text-2xl font-amiri text-pink-200 glow-text">تم التحقق بنجاح...</h2>
-              <p className="text-xl text-white/90">أهلًا بكِ يا كوثر 💖</p>
-              <p className="text-white/70">نعم... هذه المفاجأة خُلقت لكِ وحدكِ.</p>
+              <h2 className="text-2xl font-amiri text-pink-100 glow-text font-bold">تم التحقق بنجاح...</h2>
+              <p className="text-xl text-white font-medium">أهلًا بكِ يا كوثر 💖</p>
+              <p className="text-white/90">نعم... هذه المفاجأة خُلقت لكِ وحدكِ.</p>
             </div>
 
             <button

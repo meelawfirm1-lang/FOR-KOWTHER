@@ -40,7 +40,7 @@ export default function Stage1({ onNext }: Props) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 1 }}
-          className="text-xl md:text-3xl font-amiri text-pink-100 leading-relaxed whitespace-pre-line glow-text px-2"
+          className="text-xl md:text-3xl font-amiri text-white leading-relaxed whitespace-pre-line glow-text px-2 font-medium"
         >
           {messages[step]}
         </motion.div>

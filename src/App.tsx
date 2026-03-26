@@ -24,19 +24,24 @@ export default function App() {
   useEffect(() => {
     // Global click confetti
     const handleClick = (e: MouseEvent) => {
+      if (stage < 8) return; // Hide confetti until the birthday reveal (stage 8)
+      
       const x = e.clientX / window.innerWidth;
       const y = e.clientY / window.innerHeight;
       confetti({
         origin: { x, y },
-        particleCount: 25,
-        spread: 60,
+        particleCount: 15,
+        spread: 50,
         colors: ['#ffb6c1', '#ffd700', '#ff69b4', '#ffffff', '#00ffff', '#ff00ff'],
         zIndex: 9999,
         disableForReducedMotion: true
       });
     };
     window.addEventListener('click', handleClick);
+    return () => window.removeEventListener('click', handleClick);
+  }, [stage]);
 
+  useEffect(() => {
     // Romantic piano track
     audioRef.current = new Audio('https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112135.mp3');
     audioRef.current.loop = true;
@@ -48,7 +53,6 @@ export default function App() {
     birthdayAudioRef.current.volume = 0.6;
 
     return () => {
-      window.removeEventListener('click', handleClick);
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current = null;
@@ -103,13 +107,13 @@ export default function App() {
         {/* Deep Space Gradient */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#1a0b2e] via-[#05050a] to-[#000000]" />
         
-        {/* Nebula Effects */}
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-900/20 rounded-full blur-[120px] mix-blend-screen" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-blue-900/20 rounded-full blur-[150px] mix-blend-screen" />
-        <div className="absolute top-[40%] left-[60%] w-[40%] h-[40%] bg-pink-900/10 rounded-full blur-[100px] mix-blend-screen" />
+        {/* Nebula Effects - Reduced blur for better performance */}
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-900/20 rounded-full blur-[80px] mix-blend-screen" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-blue-900/20 rounded-full blur-[80px] mix-blend-screen" />
+        <div className="absolute top-[40%] left-[60%] w-[40%] h-[40%] bg-pink-900/10 rounded-full blur-[60px] mix-blend-screen" />
         
-        {/* Stars */}
-        {[...Array(100)].map((_, i) => {
+        {/* Stars - Reduced count for better mobile performance */}
+        {[...Array(40)].map((_, i) => {
           const size = Math.random() * 2 + 1;
           return (
             <div 

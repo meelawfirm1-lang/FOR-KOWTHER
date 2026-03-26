@@ -31,7 +31,7 @@ export default function Stage3({ onNext }: Props) {
               <div className="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-6 h-6 md:w-8 md:h-8 bg-pink-500 rounded-full animate-ping opacity-75" />
               <div className="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-6 h-6 md:w-8 md:h-8 bg-pink-400 rounded-full flex items-center justify-center text-[10px] md:text-xs font-bold text-white shadow-lg">1</div>
             </div>
-            <p className="mt-6 md:mt-8 text-lg md:text-xl font-amiri text-pink-100/80 group-hover:text-pink-100 transition-colors">اضغطي لفتح الرسالة 💌</p>
+            <p className="mt-6 md:mt-8 text-lg md:text-xl font-amiri text-pink-50 group-hover:text-white transition-colors font-medium">اضغطي لفتح الرسالة 💌</p>
           </motion.div>
         ) : (
           <motion.div
@@ -43,14 +43,22 @@ export default function Stage3({ onNext }: Props) {
           >
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-pink-400 to-transparent opacity-50" />
             
-            <h3 className="text-xl md:text-2xl font-amiri text-pink-300 mb-4 md:mb-6 text-right">إلى كوثر...</h3>
+            <h3 className="text-xl md:text-2xl font-amiri text-pink-200 mb-4 md:mb-6 text-right font-bold">إلى كوثر...</h3>
             
-            <p className="text-lg md:text-2xl font-amiri text-white/90 leading-loose text-right whitespace-pre-line">
-              هناك أشخاص يمرّون في الحياة مرورًا عاديًا،<br/>
-              وهناك أشخاص يتركون في القلب أثرًا لا يشبه أحدًا...<br/><br/>
-              وأنتِ من النوع الذي يجعل الأيام ألطف،<br/>
-              والقلب أهدأ،<br/>
-              والحياة أكثر احتمالًا وجمالًا.
+            <p className="text-lg md:text-2xl font-amiri text-white leading-loose text-right whitespace-pre-line font-medium">
+              هناك من يمرّ في حياتنا كنسمة عابرة لا تُذكر،<br/>
+              وهناك من يحضر فينا كأثرٍ عميق لا يُمحى…<br/>
+              كأنّه كُتب في تفاصيل القلب قبل أن نلتقيه.<br/><br/>
+              وأنتِ… لستِ مجرد حضور،<br/>
+              بل حالة تُعيد ترتيب الأشياء من الداخل،<br/>
+              تجعل الأيام أقل قسوة،<br/>
+              والصمت أكثر طمأنينة،<br/>
+              والحياة—رغم كل شيء—أكثر قابلية لأن تُعاش.<br/><br/>
+              في وجودكِ،<br/>
+              تخفّ ضوضاء العالم،<br/>
+              ويصبح للقلب إيقاعٌ أهدأ…<br/>
+              وكأنّكِ لم تأتِ صدفة،<br/>
+              بل جئتِ في الوقت الذي كان يحتاجكِ فيه كل شيء 💖
             </p>
 
             <motion.button

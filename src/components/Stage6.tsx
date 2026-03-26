@@ -21,7 +21,7 @@ export default function Stage6({ onNext }: Props) {
       >
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-pink-500/5 to-purple-500/5 pointer-events-none" />
         
-        <p className="text-lg md:text-3xl font-amiri text-pink-100 leading-[2] md:leading-[2.5] whitespace-pre-line text-right glow-text">
+        <p className="text-lg md:text-3xl font-amiri text-white leading-[2] md:leading-[2.5] whitespace-pre-line text-right glow-text font-medium">
           كوثر...<br/>
           أتمنى أن تعرفي شيئًا مهمًا جدًا:<br/>
           بعض الأشخاص لا يكونون جميلين فقط في ملامحهم،<br/>

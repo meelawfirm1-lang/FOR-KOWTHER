@@ -1,26 +1,76 @@
-import { motion } from 'motion/react';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import confetti from 'canvas-confetti';
 
 interface Props {
   key?: string;
 }
 
 export default function Stage9({}: Props) {
+  const [giftState, setGiftState] = useState<'hidden' | 'box' | 'opened'>('hidden');
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setGiftState('box');
+    }, 4000); // Show gift box after 4 seconds
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (giftState === 'opened' && containerRef.current) {
+      setTimeout(() => {
+        containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }, 100);
+    }
+  }, [giftState]);
+
+  const openGift = () => {
+    setGiftState('opened');
+    
+    // Confetti explosion
+    const duration = 3000;
+    const end = Date.now() + duration;
+
+    (function frame() {
+      confetti({
+        particleCount: 5,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
+        colors: ['#ffb6c1', '#ffd700', '#ff69b4', '#ffffff']
+      });
+      confetti({
+        particleCount: 5,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+        colors: ['#ffb6c1', '#ffd700', '#ff69b4', '#ffffff']
+      });
+
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    }());
+  };
+
   return (
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="w-full max-w-2xl mx-auto text-center px-4 flex flex-col items-center justify-center min-h-[60vh]"
+      className="w-full max-w-2xl mx-auto text-center px-4 flex flex-col items-center justify-center min-h-[60vh] py-12"
     >
       <motion.div
+        ref={containerRef}
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5 }}
-        className="glass-panel p-6 md:p-12 relative overflow-hidden mx-4"
+        className="glass-panel p-6 md:p-12 relative overflow-hidden mx-4 w-full"
       >
         <div className="absolute inset-0 bg-gradient-to-t from-pink-500/10 to-transparent pointer-events-none" />
         
-        <p className="text-lg md:text-2xl font-amiri text-white/90 leading-loose whitespace-pre-line text-right glow-text">
+        <p className="text-lg md:text-2xl font-amiri text-white leading-loose whitespace-pre-line text-right glow-text font-medium">
           إذا وصلتِ إلى هنا...<br/>
           فهذا يعني أنكِ أخذتِ هذه اللحظة كما تستحق،<br/>
           وهذا بالضبط ما أردته لكِ:<br/>
@@ -34,6 +84,52 @@ export default function Stage9({}: Props) {
             عيد ميلاد سعيد وعمر مديد ياكوثر وكل عام وانتي اجمل اقداري 🌙💖
           </span>
         </p>
+
+        <AnimatePresence mode="wait">
+          {giftState === 'box' && (
+            <motion.div
+              key="gift-box"
+              initial={{ opacity: 0, scale: 0.5, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0, rotate: 180 }}
+              onClick={openGift}
+              className="mt-12 cursor-pointer flex flex-col items-center"
+            >
+              <motion.div
+                animate={{ y: [0, -15, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                className="text-7xl md:text-8xl drop-shadow-[0_0_30px_rgba(255,182,193,0.6)]"
+              >
+                🎁
+              </motion.div>
+              <p className="mt-6 text-pink-200 font-amiri text-xl md:text-2xl animate-pulse font-bold">
+                افتحي الهدية ✨
+              </p>
+            </motion.div>
+          )}
+
+          {giftState === 'opened' && (
+            <motion.div
+              key="gift-opened"
+              initial={{ opacity: 0, scale: 0.5, height: 0 }}
+              animate={{ opacity: 1, scale: 1, height: 'auto' }}
+              transition={{ duration: 0.8, type: "spring" }}
+              className="mt-12 flex flex-col items-center justify-center"
+            >
+              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border-4 border-pink-300/30 shadow-[0_0_40px_rgba(255,182,193,0.5)] mb-8">
+                <img 
+                  src="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  alt="Bouquet" 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <h2 className="text-4xl md:text-5xl font-amiri font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-pink-300 glow-text leading-relaxed">
+                إلى كوكي حبيبتي 💖
+              </h2>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     </motion.div>
   );

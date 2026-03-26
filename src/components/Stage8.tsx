@@ -73,7 +73,7 @@ export default function Stage8({ onNext }: Props) {
         transition={{ delay: 2, duration: 1.5 }}
         className="glass-panel p-6 md:p-12 w-full text-right"
       >
-        <p className="text-lg md:text-3xl font-amiri text-pink-50 leading-[2] md:leading-[2.5] whitespace-pre-line glow-text">
+        <p className="text-lg md:text-3xl font-amiri text-white leading-[2] md:leading-[2.5] whitespace-pre-line glow-text font-medium">
           في 28 مارس 1998،<br/>
           لم يولد يوم جميل فقط...<br/>
           بل وُلد سبب يجعل الحياة أرقّ،<br/>
@@ -101,7 +101,7 @@ export default function Stage8({ onNext }: Props) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             onClick={onNext}
-            className="mt-16 px-8 py-3 bg-white/5 border border-white/20 rounded-full text-sm text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300"
+            className="mt-16 px-8 py-3 bg-white/10 border border-white/30 rounded-full text-sm text-white hover:bg-white/20 transition-all duration-300 font-medium"
           >
             رسالة أخيرة لكِ فقط 🤍
           </motion.button>
