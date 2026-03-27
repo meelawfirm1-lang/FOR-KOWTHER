@@ -30,11 +30,13 @@ export default function App() {
       const y = e.clientY / window.innerHeight;
       confetti({
         origin: { x, y },
-        particleCount: 15,
-        spread: 50,
+        particleCount: 25,
+        spread: 70,
+        startVelocity: 20,
         colors: ['#ffb6c1', '#ffd700', '#ff69b4', '#ffffff', '#00ffff', '#ff00ff'],
         zIndex: 9999,
-        disableForReducedMotion: true
+        disableForReducedMotion: true,
+        ticks: 100
       });
     };
     window.addEventListener('click', handleClick);
@@ -107,10 +109,11 @@ export default function App() {
         {/* Deep Space Gradient */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#1a0b2e] via-[#05050a] to-[#000000]" />
         
-        {/* Nebula Effects - Reduced blur for better performance */}
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-900/20 rounded-full blur-[80px] mix-blend-screen" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-blue-900/20 rounded-full blur-[80px] mix-blend-screen" />
-        <div className="absolute top-[40%] left-[60%] w-[40%] h-[40%] bg-pink-900/10 rounded-full blur-[60px] mix-blend-screen" />
+        {/* Magical Glowing Orbs */}
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-600/20 rounded-full blur-[100px] mix-blend-screen animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-pink-600/20 rounded-full blur-[120px] mix-blend-screen animate-pulse" style={{ animationDuration: '10s' }} />
+        <div className="absolute top-[40%] left-[60%] w-[40%] h-[40%] bg-rose-500/15 rounded-full blur-[90px] mix-blend-screen animate-pulse" style={{ animationDuration: '7s' }} />
+        <div className="absolute top-[60%] left-[20%] w-[30%] h-[30%] bg-fuchsia-500/15 rounded-full blur-[80px] mix-blend-screen animate-pulse" style={{ animationDuration: '9s' }} />
         
         {/* Stars - Reduced count for better mobile performance */}
         {[...Array(40)].map((_, i) => {

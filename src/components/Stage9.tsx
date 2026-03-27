@@ -28,30 +28,40 @@ export default function Stage9({}: Props) {
   const openGift = () => {
     setGiftState('opened');
     
-    // Confetti explosion
-    const duration = 3000;
-    const end = Date.now() + duration;
+    // Spectacular Confetti Explosion
+    const duration = 5000;
+    const animationEnd = Date.now() + duration;
+    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
-    (function frame() {
-      confetti({
-        particleCount: 5,
-        angle: 60,
-        spread: 55,
-        origin: { x: 0 },
-        colors: ['#ffb6c1', '#ffd700', '#ff69b4', '#ffffff']
-      });
-      confetti({
-        particleCount: 5,
-        angle: 120,
-        spread: 55,
-        origin: { x: 1 },
-        colors: ['#ffb6c1', '#ffd700', '#ff69b4', '#ffffff']
-      });
+    const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
 
-      if (Date.now() < end) {
-        requestAnimationFrame(frame);
+    const interval: any = setInterval(function() {
+      const timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
       }
-    }());
+
+      const particleCount = 50 * (timeLeft / duration);
+      confetti(Object.assign({}, defaults, { 
+        particleCount, 
+        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+        colors: ['#ffb6c1', '#ffd700', '#ff69b4', '#ffffff']
+      }));
+      confetti(Object.assign({}, defaults, { 
+        particleCount, 
+        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+        colors: ['#ffb6c1', '#ffd700', '#ff69b4', '#ffffff']
+      }));
+    }, 250);
+
+    // Center burst
+    confetti({
+      particleCount: 150,
+      spread: 100,
+      origin: { y: 0.6 },
+      colors: ['#ff0000', '#ff69b4', '#ff1493', '#ffd700']
+    });
   };
 
   return (
@@ -93,13 +103,14 @@ export default function Stage9({}: Props) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0, rotate: 180 }}
               onClick={openGift}
-              className="mt-12 cursor-pointer flex flex-col items-center"
+              className="mt-12 cursor-pointer flex flex-col items-center animate-float-slow"
             >
               <motion.div
                 animate={{ y: [0, -15, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
-                className="text-7xl md:text-8xl drop-shadow-[0_0_30px_rgba(255,182,193,0.6)]"
+                className="text-7xl md:text-8xl drop-shadow-[0_0_30px_rgba(255,182,193,0.8)] relative"
               >
+                <div className="absolute inset-0 bg-pink-400/20 blur-2xl rounded-full animate-pulse-glow" />
                 🎁
               </motion.div>
               <p className="mt-6 text-pink-200 font-amiri text-xl md:text-2xl animate-pulse font-bold">
@@ -114,9 +125,9 @@ export default function Stage9({}: Props) {
               initial={{ opacity: 0, scale: 0.5, height: 0 }}
               animate={{ opacity: 1, scale: 1, height: 'auto' }}
               transition={{ duration: 0.8, type: "spring" }}
-              className="mt-12 flex flex-col items-center justify-center"
+              className="mt-12 flex flex-col items-center justify-center animate-float-slow"
             >
-              <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-2xl overflow-hidden border-4 border-pink-300/30 shadow-[0_0_40px_rgba(255,182,193,0.5)] mb-8 bg-black/20">
+              <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-2xl overflow-hidden border-4 border-pink-300/30 shadow-[0_0_40px_rgba(255,182,193,0.5)] mb-8 bg-black/20 animate-pulse-glow">
                 <img 
                   src="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?auto=format&fit=crop&w=800&q=80" 
                   alt="Bouquet of Red Roses" 
@@ -127,7 +138,7 @@ export default function Stage9({}: Props) {
                   }}
                 />
               </div>
-              <h2 className="text-4xl md:text-5xl font-amiri font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-pink-300 glow-text leading-relaxed">
+              <h2 className="text-4xl md:text-5xl font-amiri font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-pink-300 animate-shimmer leading-relaxed">
                 إلى كوكي حبيبتي 💖
               </h2>
             </motion.div>
